@@ -6,7 +6,7 @@
 	<groupId>com.alpatech</groupId>
 	<artifactId>cutgastos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>cutgastos</name>
 	<description>Aplicação para gerar gastos de energia</description>
