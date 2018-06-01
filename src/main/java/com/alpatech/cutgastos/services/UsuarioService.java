@@ -15,7 +15,7 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     @Transactional
-    public Usuario findById(String id){
+    public Usuario findById(Integer id){
         return this.usuarioRepository.findById(id).orElse(null);
     }
 
