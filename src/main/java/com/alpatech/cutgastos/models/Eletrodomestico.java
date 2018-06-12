@@ -35,6 +35,9 @@ public class Eletrodomestico {
     @Column(name="minutos")
     private Integer minutos;
 
+    @Column(name="dias_uso")
+    private Integer dias;
+
     @ManyToOne
     @JoinColumn(name="usuario_id")
     private Usuario usuario;
@@ -117,5 +120,13 @@ public class Eletrodomestico {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Integer getDias() {
+        return dias;
+    }
+
+    public void setDias(Integer diasUso) {
+        this.dias = diasUso;
     }
 }
