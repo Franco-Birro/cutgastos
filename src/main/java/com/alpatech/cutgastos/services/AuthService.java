@@ -11,11 +11,11 @@ public class AuthService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public Boolean auth(String email, String senha){
+    public Usuario auth(String email, String senha){
         Usuario usuario = this.usuarioRepository.findByEmail(email);
-        if(usuario.getSenha().equals(senha)){
-            return Boolean.TRUE;
+        if(usuario != null && usuario.getSenha().equals(senha)){
+            return usuario;
         }
-        return Boolean.FALSE;
+        return null;
     }
 }
