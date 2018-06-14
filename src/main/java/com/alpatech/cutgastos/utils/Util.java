@@ -13,9 +13,9 @@ public class Util {
         return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
-    public static void instanciaVetorComZero(Integer [] vet){
+    public static void instanciaVetorComZero(Double [] vet){
         for(int i = 0; i < vet.length; i++){
-            vet[i] = 0;
+            vet[i] = 0.0;
         }
     }
 
