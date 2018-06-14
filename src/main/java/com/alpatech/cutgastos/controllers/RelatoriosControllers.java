@@ -40,4 +40,16 @@ public class RelatoriosControllers {
             return new JsonReturn("", JsonReturnStatus.SUCESSO, map);
         }
     }
+
+    @GetMapping(value ="/valorConta")
+    public JsonReturn valorConta(@RequestParam(name="usuarioId") Integer usuarioId)
+    {   //mudar aqui //incluir método
+        Double [] valores = this.relatoriosServices.valorConta(usuarioId);
+        if( valores == null){
+            return new JsonReturn("Não foi encontrado nenhum custo para o usuario informado", JsonReturnStatus.ERRO, null);
+        }
+        else{
+            return new JsonReturn("", JsonReturnStatus.SUCESSO, valores);
+        }
+    }
 }

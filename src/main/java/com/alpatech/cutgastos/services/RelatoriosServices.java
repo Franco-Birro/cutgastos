@@ -5,11 +5,15 @@ import com.alpatech.cutgastos.utils.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Service
 public class RelatoriosServices {
@@ -189,4 +193,48 @@ public class RelatoriosServices {
             return  map;
         }
     }
+
+    public Double [] valorConta (Integer usuarioId)
+    {
+        LocalDate data = LocalDate.now();
+        int mes = data.getMonthValue();
+        int ano = data.getYear();
+
+        double ICMS = 0.3; //valor padrão
+
+        Double [] dados = consumo(mes, ano, usuarioId);
+        Double [] valoresConta = new Double[3];
+
+        valoresConta[0] = 0.0;
+        valoresConta[1] = 0.0;
+        valoresConta[2] = 0.0;
+
+        Double precoTarifaResidencial = 0.49414;
+
+        Double valorTarifaVerde = 0.0;
+        Double valorTarifaAmarela = 0.015;
+        Double valorTarifaVermelha = 0.03;
+
+
+        for (int i = 0; i < dados.length; i++)
+        {
+            valoresConta[0]= dados[i]+valoresConta[0];
+        }
+        valoresConta[0] = valoresConta[0] * ICMS * (valorTarifaVerde+precoTarifaResidencial);
+
+        for (int i = 0; i < dados.length; i++)
+        {
+            valoresConta[1]= dados[i]+valoresConta[1];
+        }
+        valoresConta[1] = valoresConta[1] * ICMS * (valorTarifaAmarela+precoTarifaResidencial);
+
+        for (int i = 0; i < dados.length; i++)
+        {
+            valoresConta[2]= dados[i]+valoresConta[2];
+        }
+        valoresConta[2] = valoresConta[2] * ICMS * (valorTarifaVermelha+precoTarifaResidencial);
+
+        return valoresConta;
+    }
+
 }
