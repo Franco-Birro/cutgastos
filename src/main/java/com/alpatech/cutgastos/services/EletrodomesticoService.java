@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,6 +31,7 @@ public class EletrodomesticoService {
 
     @Transactional
     public Eletrodomestico save(Eletrodomestico eletrodomestico){
+        eletrodomestico.setDataCadastro(new Date());
         return this.eletrodomesticoRepository.save(eletrodomestico);
     }
 
