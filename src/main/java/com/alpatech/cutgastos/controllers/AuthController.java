@@ -7,19 +7,23 @@ import com.alpatech.cutgastos.utils.JsonReturn;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController()
 @RequestMapping(value = "/auth")
 public class AuthController {
 
-    @Autowired
-    private AuthService authService;
-
-    @PostMapping()
-    public JsonReturn auth(@RequestParam String email, @RequestParam String senha){
-        Usuario usuario = authService.auth(email,senha);
+    //@RequestBody
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public JsonReturn auth(@RequestBody Usuario user){
+        Usuario usuario = authService.auth(user.getEmail(),user.getSenha());
         if(usuario !=null){
             return new JsonReturn("Autenticado com Sucesso!", JsonReturnStatus.SUCESSO, usuario);
         }
         return new JsonReturn("Acesso não permitido! Usuário ou senha incorretos", JsonReturnStatus.ERRO, null);
     }
+
+    @Autowired
+    private AuthService authService;
 }
