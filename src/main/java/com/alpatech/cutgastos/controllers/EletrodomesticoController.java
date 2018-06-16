@@ -69,9 +69,9 @@ public class EletrodomesticoController {
             return new JsonReturn("Não foi possível completar o cadastro com os dados informados!", JsonReturnStatus.ERRO, null);
         }
         else{
-            if(eletrodomestico.getUsuario().getId() != null && eletrodomestico.getDataCadastro() != null && eletrodomestico.getNome() != null
-                    && eletrodomestico.getPotenciaStandby() != null && eletrodomestico.getPotenciaUso() != null && eletrodomestico.getDescricao() != null
-                    && eletrodomestico.getHoras() != null && eletrodomestico.getQuantidade() != null && eletrodomestico.getMinutos() != null) {
+            if(eletrodomestico.getUsuario().getId() != null && eletrodomestico.getNome() != null
+                    && eletrodomestico.getPotenciaUso() != null && eletrodomestico.getDescricao() != null
+                    && eletrodomestico.getHoras() != null && eletrodomestico.getQuantidade() != null) {
                 if(eletrodomestico.getId() == null) {
                     try {
                         eletrodomestico = this.eletrodomesticoService.save(eletrodomestico);
