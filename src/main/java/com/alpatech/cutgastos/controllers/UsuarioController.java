@@ -56,7 +56,7 @@ public class UsuarioController {
                 }
             }
             catch(Exception e){
-                return new JsonReturn("Não foi possível salvar o usuário.", JsonReturnStatus.ERRO, null);
+                return new JsonReturn("Não foi possível salvar o usuário.", JsonReturnStatus.ERRO, e.getMessage());
             }
         }
     }
@@ -82,7 +82,7 @@ public class UsuarioController {
                 }
             }
             catch(Exception e){
-                return new JsonReturn("Não foi possível salvar o usuário.", JsonReturnStatus.ERRO, null);
+                return new JsonReturn("Não foi possível salvar o usuário.", JsonReturnStatus.ERRO, e.getMessage());
             }
         }
     }

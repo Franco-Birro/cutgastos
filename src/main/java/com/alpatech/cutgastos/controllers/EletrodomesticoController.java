@@ -119,7 +119,7 @@ public class EletrodomesticoController {
                 }
             }
             catch(Exception e){
-                return new JsonReturn("Não foi possível salvar o usuário.", JsonReturnStatus.ERRO, e.getMessage());
+                return new JsonReturn("Não foi possível salvar o eletromestico.", JsonReturnStatus.ERRO, e.getMessage());
             }
         }
     }
